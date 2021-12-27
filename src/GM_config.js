@@ -112,6 +112,9 @@ var GM_config = function(){
 		if (config.local) {
 			key = location.hostname + "/" + key;
 		}
+
+		key = config.scriptId + "/" + key;
+
 		var value = GM_getValue(key);
 		if (GM_getValue(key + "/type") == "object") {
 			value = JSON.parse(value);
@@ -123,6 +126,9 @@ var GM_config = function(){
 		if (config.local) {
 			key = location.hostname + "/" + key;
 		}
+
+		key = config.scriptId + "/" + key;
+
 		if (typeof value == "object") {
 			GM_setValue(key + "/type", "object");
 			value = JSON.stringify(value);
@@ -132,7 +138,7 @@ var GM_config = function(){
 
 	function read() {
 		var key, s;
-		config.local = GM_getValue(location.hostname, true);
+		config.local = GM_getValue(config.scriptId + "/" + location.hostname, true);
 		for (key in config.fields) {
 			s = config.fields[key];
 			s.value = getValue(key, s.type);
@@ -144,7 +150,7 @@ var GM_config = function(){
 
 	function save() {
 		var key, s;
-		GM_setValue(location.hostname, config.local);
+		GM_setValue(config.scriptId + "/" + location.hostname, config.local);
 		for (key in config.fields) {
 			s = config.fields[key];
 			if (s.value == null) {
@@ -532,6 +538,7 @@ var GM_config = function(){
 
 	GM_config = {
 		init: function(scriptId, settings) {
+			config.scriptId = scriptId;
 			config.title = settings.title;
 			config.fields = settings.fields;
 
