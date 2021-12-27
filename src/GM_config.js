@@ -46,12 +46,13 @@ var GM_config = function(){
 	"use strict";
 
 	var config = {
-		scriptId: null, // TODO
+		scriptId: null,
 		title: null,
 		fields: null,
 		local: true,
-		showImportExport: false, // TODO
-		showLocal: false // TODO
+		showImportExport: false,
+		showLocal: false,
+		showDefaultButton: true
 	}, dialog, css, GM_config;
 
 	function addChild(e, children) {
@@ -421,14 +422,18 @@ var GM_config = function(){
 				click: function() {
 					close();
 				}
-			}}, "Cancel"),
-
-			element("button", {class: "btn-default", event: {
-				click: function() {
-					setupDialogValue(true);
-				}
-			}}, "Default"),
+			}}, "Cancel")
 		]));
+
+		if (config.showDefaultButton) {
+			dialog.footer.appendChild(
+				element("button", {class: "btn-default", event: {
+					click: function() {
+						setupDialogValue(true);
+					}
+				}}, "Default")
+			);
+		}
 
 		if (config.showLocal) {
 			dialog.footer.appendChild(frag([
@@ -542,7 +547,7 @@ var GM_config = function(){
 			config.title = settings.title;
 			config.fields = settings.fields;
 
-			["showLocal", "showImportExport"].forEach((key, i) => {
+			["showLocal", "showImportExport", "showDefaultButton"].forEach((key, i) => {
 				if (settings.hasOwnProperty(key)) {
 					config[key] = settings[key];
 				}
