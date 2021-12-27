@@ -46,9 +46,12 @@ var GM_config = function(){
 	"use strict";
 
 	var config = {
+		scriptId: null, // TODO
 		title: null,
-		settings: null,
-		local: false
+		fields: null,
+		local: true,
+		showImportExport: false, // TODO
+		showLocal: false // TODO
 	}, dialog, css, GM_config;
 
 	function addChild(e, children) {
@@ -129,9 +132,9 @@ var GM_config = function(){
 
 	function read() {
 		var key, s;
-		config.local = GM_getValue(location.hostname, false);
-		for (key in config.settings) {
-			s = config.settings[key];
+		config.local = GM_getValue(location.hostname, true);
+		for (key in config.fields) {
+			s = config.fields[key];
 			s.value = getValue(key, s.type);
 			if (s.value == null) {
 				s.value = s.default;
@@ -142,8 +145,8 @@ var GM_config = function(){
 	function save() {
 		var key, s;
 		GM_setValue(location.hostname, config.local);
-		for (key in config.settings) {
-			s = config.settings[key];
+		for (key in config.fields) {
+			s = config.fields[key];
 			if (s.value == null) {
 				setValue(key, s.default);
 			} else {
@@ -219,8 +222,8 @@ var GM_config = function(){
 		}
 		destroyDialog();
 
-		for (key in config.settings) {
-			s = config.settings[key];
+		for (key in config.fields) {
+			s = config.fields[key];
 			if (saveFlag) {
 				switch (s.type) {
 					case "number":
@@ -280,8 +283,8 @@ var GM_config = function(){
 	function setupDialogValue (reset, imports) {
 		var key, setting, value;
 
-		for (key in config.settings) {
-			setting = config.settings[key];
+		for (key in config.fields) {
+			setting = config.fields[key];
 
 			if (reset) {
 				value = setting.default;
@@ -329,8 +332,8 @@ var GM_config = function(){
 	function createInputs(dialog) {
 		var key, s, group;
 
-		for (key in config.settings) {
-			s = config.settings[key];
+		for (key in config.fields) {
+			s = config.fields[key];
 
 			if (s.type == "textarea") {
 				s.element = element("textarea", {"id": key});
@@ -500,15 +503,15 @@ var GM_config = function(){
 		var con;
 
 		if (typeof key == "string") {
-			return config.settings[key].value;
+			return config.fields[key].value;
 		} else {
 			if (typeof key == "object") {
 				con = key;
 			} else {
 				con = {};
 			}
-			for (key in config.settings) {
-				con[key] = config.settings[key].value;
+			for (key in config.fields) {
+				con[key] = config.fields[key].value;
 			}
 			return con;
 		}
@@ -522,9 +525,9 @@ var GM_config = function(){
 	}
 
 	GM_config = {
-		init: function(title, settings) {
-			config.title = title;
-			config.settings = settings;
+		init: function(scriptId, settings) {
+			config.title = settings.title;
+			config.fields = settings.fields;
 			read();
 			return GM_config.get();
 		},

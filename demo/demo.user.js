@@ -14,56 +14,59 @@
 // ==/UserScript==
 
 GM_config.init("GM_config Test", {
-	text: {
-		label: "Text field",
-		type: "text",
-		default: "sadfasdf"
-	},
-	number: {
-		label: "Number field",
-		type: "number",
-		default: 12345
-	},
-	checkbox: {
-		label: "Checkbox field",
-		type: "checkbox",
-		default: true
-	},
-	textarea: {
-		label: "Textarea field",
-		type: "textarea",
-		default: "multi\nline"
-	},
-	radio: {
-		label: "Select your language",
-		type: "radio",
-		default: "en",
-		options: {
-			en: "English",
-			tw: "Traditional Chinese",
-			cn: "Simplified Chinese"
-		}
-	},
-	select: {
-		label: "Choose a color",
-		type: "select",
-		default: "orange",
-		options: {
-			red: "Red",
-			orange: "Orange",
-			yellow: "Yellow"
-		}
-	},
-	select2: {
-		label: "Multiple select",
-		type: "select",
-		default: [],
-		options: {
-			n1: "1",
-			n2: "2",
-			n3: "3"
+	title: "GM_config Test",
+	fields: {
+		text: {
+			label: "Text field",
+			type: "text",
+			default: "sadfasdf"
 		},
-		multiple: true
+		number: {
+			label: "Number field",
+			type: "number",
+			default: 12345
+		},
+		checkbox: {
+			label: "Checkbox field",
+			type: "checkbox",
+			default: true
+		},
+		textarea: {
+			label: "Textarea field",
+			type: "textarea",
+			default: "multi\nline"
+		},
+		radio: {
+			label: "Select your language",
+			type: "radio",
+			default: "en",
+			options: {
+				en: "English",
+				tw: "Traditional Chinese",
+				cn: "Simplified Chinese"
+			}
+		},
+		select: {
+			label: "Choose a color",
+			type: "select",
+			default: "orange",
+			options: {
+				red: "Red",
+				orange: "Orange",
+				yellow: "Yellow"
+			}
+		},
+		select2: {
+			label: "Multiple select",
+			type: "select",
+			default: [],
+			options: {
+				n1: "1",
+				n2: "2",
+				n3: "3"
+			},
+			multiple: true
+		}
 	}
 });
 
