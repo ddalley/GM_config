@@ -1,0 +1,141 @@
+// Source: https://github.com/eight04/end2end
+// Reset fieldset
+fieldset, legend {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	padding: 0;
+}
+
+// Fix legend problem
+.row-gap > fieldset > legend {
+	position: relative;
+	top: @gap;
+}
+
+// Angular form state
+input,
+textarea,
+select {
+	&.ng-invalid {
+		&, &:hover, &:focus {
+			border-color: @brand-danger;
+		}
+	}
+}
+input[type="checkbox"],
+input[type="radio"] {
+	&.ng-invalid {
+		&, &:hover, &:focus {
+			box-shadow: 0 0 0 1px @brand-danger;
+		}
+	}
+}
+
+// Placeholder
+::-webkit-input-placeholder {
+	color: @bg-color-hard;
+}
+::-moz-placeholder { /* Firefox 19+ */
+	color: @bg-color-hard;
+}
+:-ms-input-placeholder {
+	color: @bg-color-hard;
+}
+:-moz-placeholder { /* Firefox 18- */
+	color: @bg-color-hard;
+}
+
+// Form component. Include form controls.
+.form-group {
+	.make-margin();
+	.row > & {
+		margin: 0;
+	}
+}
+
+label,
+legend {
+	vertical-align: bottom;
+	+ .form-control,
+	+ .input-group,
+	+ .radio,
+	+ .checkbox,
+	.form-control,
+	.input-group,
+	.radio,
+	.checkbox {
+		margin-top: 0.3em;
+	}
+}
+
+.form-control {
+	.make-border();
+	display: block;
+	width: 100%;
+	line-height: 1;
+	display: inline-block;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	color: @font-color-light;
+	transition: 0.2s all linear;
+
+	&:hover {
+		border-color: @border-color-light;
+	}
+	&:focus {
+		border-color: @border-color-active;
+		color: @font-color-active;
+	}
+	&[disabled] {
+		background-color: @bg-color-base;
+		border-color: @border-color-light;
+		cursor: not-allowed;
+		&:hover,
+		&:active {
+			border-color: @border-color-light;
+		}
+	}
+}
+
+// Radio and checkbox
+.radio, .checkbox {
+	position: relative;
+
+	input[type="radio"],
+	input[type="checkbox"] {
+		color: inherit;
+		position: absolute;
+		width: auto;
+		height: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto 0;
+	}
+
+	label, label& {
+		display: table;
+		padding-left: 1.5em;
+		cursor: pointer;
+		line-height: @line-height-base;
+		transition: 0.2s all linear;
+
+		&:hover {
+			color: @font-color-light;
+		}
+	}
+
+	// Override legend + radio
+	& + & {
+		margin-top: 0;
+	}
+}
+
+// Inline form
+&.form-inline {
+	.make-form-inline();
+}

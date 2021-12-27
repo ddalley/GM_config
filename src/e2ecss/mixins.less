@@ -1,0 +1,157 @@
+// Source: https://github.com/eight04/end2end
+// Should we move mixins to each components?
+
+.make-margin(@gap: 1em){
+	margin-top: @gap;
+	margin-bottom: @gap;
+}
+
+.make-padding(@gap: 1em){
+	padding-top: @gap;
+	padding-bottom: @gap;
+}
+
+.make-border(){
+	border: 1px solid @border-color-base;
+	border-radius: @radius-base;
+}
+
+.make-shadow(@color){
+	box-shadow: 0 0 0.5em 0 @color;
+}
+
+.make-link-color(@color, @color-focus) {
+	&:link,
+	&:visited {
+		color: @color;
+	}
+	&:hover {
+		color: @color-focus;
+	}
+	&:active {
+		color: @color-focus;
+	}
+}
+
+.make-flex(){
+	display: flex;
+	flex-wrap: wrap;
+	display: ~"block\9";
+	letter-spacing: ~"-9999px\9";
+
+	> *,
+	&:before,
+	&:after {
+		display: ~"inline-block\9";
+		letter-spacing: ~"normal\9";
+		vertical-align: ~"top\9";
+		min-width: 0;
+	}
+
+	// Opera hack
+	@{opera} & {
+		display: block;
+		word-spacing: -9999px;
+		> *,
+		&:before,
+		&:after {
+			display: inline-block;
+			word-spacing: normal;
+			vertical-align: top;
+		}
+	}
+}
+
+.make-flex-nowrap(){
+	flex-wrap: nowrap;
+	white-space: ~"nowrap\9";
+	> *,
+	&:before,
+	&:after {
+		white-space: ~"normal\9";
+	}
+	@{opera} & {
+		white-space: nowrap;
+		> *,
+		&:before,
+		&:after {
+			white-space: normal;
+		}
+	}
+}
+
+.make-overflow(){
+	overflow: auto;
+	-webkit-animation-name: chrome-overflow-hack;
+	-webkit-animation-duration: 9999s;
+}
+
+.make-table-row() {
+	display: block;
+	> * {
+		display: table-cell;
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+}
+
+.make-form-inline() {
+	input, select, button, .radio, .checkbox, fieldset, .form-group {
+		display: inline-block;
+		vertical-align: middle;
+		width: auto;
+		margin: 0;
+	}
+}
+
+.make-vcenter() {
+	vertical-align: middle;
+	&:before {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+}
+
+.make-btn() {
+	.make-border();
+	transition-property: border-color, box-shadow;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+
+	&:hover {
+		border-color: @border-color-light;
+	}
+	&:focus {
+		color: @font-color-base;
+		border-color: @brand-primary;
+	}
+	&:active {
+		border-color: @brand-primary;
+		box-shadow: inset 0.12em 0.12em 0.5em darken(@bg-color-base, 7%);
+	}
+	&[disabled] {
+		background-color: @bg-color-base;
+		border-color: @border-color-light;
+		cursor: not-allowed;
+		&:hover,
+		&:active {
+			border-color: @border-color-light;
+		}
+	}
+}
+
+.make-list-unstyled() {
+	list-style: none;
+	margin-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	line-height: 1;
+}
+
+.make-inline-block() {
+	display: inline-block;
+	vertical-align: top;
+}

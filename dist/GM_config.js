@@ -26,7 +26,7 @@ GM_config is distributed under the terms of the GNU Lesser General Public Licens
 */
 
 // ==UserScript==
-// @name        GM_config (eight's version)
+// @name        GM_config (self-contained version)
 // @description	A library to help you set up configure in greasemonkey script.
 // @namespace   eight04.blogspot.com
 // @version     2.2.0
@@ -38,6 +38,7 @@ GM_config is distributed under the terms of the GNU Lesser General Public Licens
 // @supportURL  https://github.com/eight04/GM_config/issues
 // @attribution sizzlemctwizzle (https://github.com/sizzlemctwizzle/GM_config)
 // @attribution Joe Simmons (https://greasyfork.org/en/scripts/1884-gm-config)
+// @attribution eight04 (https://github.com/eight04/GM_config)
 // ==/UserScript==
 
 var GM_config = function(){
@@ -512,7 +513,7 @@ var GM_config = function(){
 			return con;
 		}
 	}
-	
+
 	function setup(options, loadCallback) {
 		GM_config.init(GM_info.script.name, options);
 		GM_config.onload = loadCallback;

@@ -1,0 +1,61 @@
+// Buttons
+.btn-default {
+	.make-btn();
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	min-width: 4.25em;
+}
+.btn-sm {
+	.make-btn();
+	width: 2em;
+	line-height: 0.8;
+}
+.btn-close {
+	width: 1em;
+	height: 1em;
+	vertical-align: baseline;
+	color: @font-color-light;
+	&:hover {
+		color: inherit;
+	}
+}
+.btn-circle {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	text-align: center;
+	line-height: 1.25;
+	font-size: 80%;
+	vertical-align: baseline;
+	border-radius: 50%;
+	border: 1px solid @font-color-light;
+	margin: -1px 0;
+	color: @font-color-light;
+	&:hover {
+		color: inherit;
+		border-color: inherit;
+	}
+}
+
+// Modifier
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+// Button group
+.btn-group {
+	.make-table-row();
+	display: inline-block;
+	border: 1px solid @border-color-base;
+	border-radius: @radius-base;
+	> * {
+		border-width: 0 1px;
+		border-radius: 0;
+		margin-right: -1px;
+
+		&:first-child {
+			margin-left: -1px;
+		}
+	}
+}

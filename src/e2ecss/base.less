@@ -1,0 +1,171 @@
+// Source: https://github.com/eight04/end2end
+
+// Box sizing
+* {
+	&,
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+a {
+	.make-link-color(@font-color-light, @brand-primary);
+	transition: all 0.2s linear;
+}
+
+.link {
+	color: @font-color-light;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+body {
+	font-size: @font-size-base;
+	font-family: @font-family-base;
+	color: @font-color-base;
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+}
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+	margin-top: @gap*2;
+	margin-bottom: @gap;
+	font-weight: bold;
+	small {
+		font-size: 70%;
+		color: @font-color-lighter;
+	}
+	.head-reset {
+		font-size: @font-size-base;
+		font-weight: normal;
+	}
+}
+
+h1 {
+	font-size: 260%;
+}
+
+h2 {
+	font-size: 215%;
+	border-bottom: 1px solid @border-color-base;
+	padding-bottom: 0.25em;
+}
+
+h3 {
+	font-size: 170%;
+}
+
+h4 {
+	font-size: 125%;
+}
+
+h5 {
+	font-size: 100%;
+}
+
+h6 {
+	font-size: 85%;
+}
+
+p {
+	margin-top: 0.9375em;
+	margin-bottom: 0.9375em;
+	line-height: @line-height-base;
+}
+
+input,
+textarea,
+select,
+button {
+	font-size: inherit;
+	font-family: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+	height: 2em;
+	color: inherit;
+	background-color: transparent;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+::-moz-placeholder,
+:-moz-placeholder {
+	opacity: 1;
+}
+
+:invalid {
+	outline: none;
+	box-shadow: none;
+}
+
+textarea {
+	height: auto;
+	line-height: @line-height-base;
+	padding-top: unit(0.5 - (@line-height-base - 1)/2, em);
+	padding-bottom: unit(0.5 - (@line-height-base - 1)/2, em);
+}
+
+select {
+	cursor: pointer;
+	line-height: @line-height-base;
+
+	&[multiple] {
+		height: auto;
+	}
+}
+
+button {
+	cursor: pointer;
+	text-align: center;
+	background-image: none;
+
+	// Firefox button fix: http://davidwalsh.name/firefox-buttons
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+}
+
+img {
+	vertical-align: text-bottom;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+code {
+	font-family: @font-family-monospace;
+	background-color: @bg-color-base;
+	font-size: 90%;
+	padding: 0.25em;
+}
+
+pre {
+	.make-margin();
+	font-family: @font-family-monospace;
+}
+
+small {
+	font-size: 90%;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid @border-color-base;
+	margin: @gap 0;
+}
+
+// Selection
+::selection {
+	background-color: fade(@highlight, 40%);
+}
+::-moz-selection {
+	background-color: fade(@highlight, 40%);
+}

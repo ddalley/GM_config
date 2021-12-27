@@ -1,0 +1,73 @@
+// Source: https://github.com/eight04/end2end
+@gap: 15px;
+@grids: 12;
+@line-height-base: 1.55;
+
+@phone: ~"(max-width: 767px)";
+@small: ~"(min-width: 768px) and (max-width: 1024px)";
+@medium: ~"(min-width: 1025px) and (max-width: 1280px)";
+@large: ~"(min-width: 1281px)";
+
+@chrome: ~"(-webkit-min-device-pixel-ratio:0)";
+@firefox: ~"(min--moz-device-pixel-ratio:0)";
+@ie8: ~"\0screen";
+@ie9: ~"(min-width:0\0)";
+@ie10: ~"(-ms-high-contrast: active), (-ms-high-contrast: none)";
+@opera: ~"_:-o-prefocus,";
+
+@window-xs: 320px;
+@window-sm: 768px;
+@window-md: 1024px;
+@window-lg: 1280px;
+
+@sidebar-breakpoint: @window-md;
+@navbar-breakpoint: @window-sm;
+@blackboard-breakpoint: @window-sm;
+
+@color: lighten(black, 24%);
+@color-bg: darken(white, 5%);
+@link-color: lighten(@color, 35%);
+@border: lighten(@color, 40%);
+@highlight: #ffa92e;
+@btn-min: 3em;
+
+@brand-primary: #0a53f8;
+@brand-info: #00baff;
+@brand-success: #308311;
+@brand-warning: #ffc400;
+@brand-danger: #cb1b1b;
+
+@font-family-sans:  "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, "新細明體", serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", "細明體", monospace;
+@font-family-base:        @font-family-sans;
+
+@font-size-base: 16px;
+
+@font-color-base: lighten(black, 24%);
+@font-color-light: lighten(@font-color-base, 20%);
+@font-color-lighter: lighten(@font-color-light, 10%);
+@font-color-hard: darken(@font-color-base, 10%);
+@font-color-active: @font-color-hard;
+
+@bg-color-base: darken(white, 6%);
+@bg-color-hard: darken(@bg-color-base, 15%);
+@bg-color-light: lighten(@bg-color-base, 4%);
+@bg-color-active: @bg-color-light;
+
+@bg-color-primary: screen(@brand-primary, #CCCCCC);
+@bg-color-info: screen(@brand-info, #CCCCCC);
+@bg-color-success: screen(@brand-success, #CCCCCC);
+@bg-color-warning: screen(@brand-warning, #CCCCCC);
+@bg-color-danger: screen(@brand-danger, #CCCCCC);
+
+@border-color-base: lighten(black, 50%);
+@border-color-hard: darken(@border-color-base, 15%);
+@border-color-light: lighten(@border-color-base, 30%);
+@border-color-active: @brand-primary;
+
+@border-width-base: 1px;
+
+@radius-base: 0.1875em;
+
+@sidebar-breakpoint: @window-md;
