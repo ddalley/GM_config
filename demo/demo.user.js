@@ -15,6 +15,8 @@
 
 GM_config.init("GM_config Test", {
 	title: "GM_config Test",
+	showLocal: true,
+	showImportExport: true,
 	fields: {
 		text: {
 			label: "Text field",

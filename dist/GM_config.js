@@ -422,25 +422,29 @@ var GM_config = function(){
 					setupDialogValue(true);
 				}
 			}}, "Default"),
-
-			element("label", {class: "radio"}, [
-				element("input", {type: "radio", name: "working-scope", checked: !local, event: {
-					change: function () {
-						local = !this.checked;
-					}
-				}}),
-				"Global setting"
-			]),
-
-			element("label", {class: "radio"}, [
-				element("input", {type: "radio", name: "working-scope", checked: local, event: {
-					change: function () {
-						local = this.checked;
-					}
-				}}),
-				"On " + location.hostname
-			])
 		]));
+
+		if (config.showLocal) {
+			dialog.footer.appendChild(frag([
+				element("label", {class: "radio"}, [
+					element("input", {type: "radio", name: "working-scope", checked: !local, event: {
+						change: function () {
+							local = !this.checked;
+						}
+					}}),
+					"Global setting"
+				]),
+
+				element("label", {class: "radio"}, [
+					element("input", {type: "radio", name: "working-scope", checked: local, event: {
+						change: function () {
+							local = this.checked;
+						}
+					}}),
+					"On " + location.hostname
+				])
+			]));
+		}
 	}
 
 	function exportSetting() {
@@ -463,14 +467,16 @@ var GM_config = function(){
 	}
 
 	function createHead(dialog) {
-		dialog.head.appendChild(frag([
-			element("button", {class: "btn-sm", event: {
-				click: exportSetting
-			}}, "Export"),
-			element("button", {class: "btn-sm", event: {
-				click: importSetting
-			}}, "Import")
-		]));
+		if (config.showImportExport) {
+			dialog.head.appendChild(frag([
+				element("button", {class: "btn-sm", event: {
+					click: exportSetting
+				}}, "Export"),
+				element("button", {class: "btn-sm", event: {
+					click: importSetting
+				}}, "Import")
+			]));
+		}
 	}
 
 	function open() {
@@ -528,6 +534,13 @@ var GM_config = function(){
 		init: function(scriptId, settings) {
 			config.title = settings.title;
 			config.fields = settings.fields;
+
+			["showLocal", "showImportExport"].forEach((key, i) => {
+				if (settings.hasOwnProperty(key)) {
+					config[key] = settings[key];
+				}
+			});
+
 			read();
 			return GM_config.get();
 		},
